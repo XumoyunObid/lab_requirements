@@ -72,10 +72,12 @@
 
 ## Flags
 
-| Flag | Location | Access |
-|------|----------|--------|
-| user.txt | /home/[user]/ | [username] |
-| root.txt | /root/ | root |
+Flag format: `MS{<random_hash>}` (e.g., `MS{a1b2c3d4e5f67890abcdef1234567890}`)
+
+| Flag | Location | Content | Access |
+|------|----------|---------|--------|
+| user.txt | /home/[user]/ | `MS{<unique_random_hash>}` | [username] |
+| root.txt | /root/ | `MS{<unique_random_hash>}` | root |
 
 ---
 

@@ -89,6 +89,7 @@ Total time: **3-8 hours** for the target audience.
 Before finalizing a Medium scenario, verify:
 
 - [ ] The attack chain has 3-4 distinct steps
+- [ ] Any CVE used is from 2025 or 2026 (`CVE-2025-*` or `CVE-2026-*`)
 - [ ] At least one step requires understanding the vulnerability, not just running a tool
 - [ ] Lateral movement (if present) uses a different technique than initial access
 - [ ] The privesc requires understanding of the automation/deployment tool

@@ -73,6 +73,7 @@ Total time: **1-3 hours** for the target audience.
 Before finalizing an Easy scenario, verify:
 
 - [ ] The initial CVE/vulnerability has a public PoC that works out of the box
+- [ ] Any CVE used is from 2025 or 2026 (`CVE-2025-*` or `CVE-2026-*`)
 - [ ] The technology stack is common and well-documented
 - [ ] The privesc vector is discoverable through standard `linpeas`/`LinEnum` enumeration
 - [ ] The story explains both the initial vuln and the privesc naturally
