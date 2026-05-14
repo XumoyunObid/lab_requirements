@@ -97,4 +97,6 @@ Before finalizing a Medium scenario, verify:
 - [ ] The story explains all vulnerabilities and misconfigurations naturally
 - [ ] No `sudo -l` giveaway privesc
 - [ ] No plaintext credential files used as hints
+- [ ] Passwords requiring cracking are found in common wordlists (rockyou.txt, etc.)
+- [ ] OS is Ubuntu 26.04 unless an older version is specifically justified
 - [ ] The chain would survive review by an experienced penetration tester

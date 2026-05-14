@@ -4,7 +4,7 @@
 
 **Name:** [Machine Name]
 **Difficulty:** [Easy | Medium | Insane]
-**OS:** [Operating System and Version]
+**OS:** [Operating System and Version — default: Ubuntu 26.04 unless older version justified for kernel CVEs]
 **Domain:** `[machine-name.ms]`
 **Theme:** [One-line description of the scenario's real-world context]
 

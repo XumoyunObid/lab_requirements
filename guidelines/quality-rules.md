@@ -23,10 +23,13 @@ The solver must discover information through **realistic enumeration**, not plan
 
 ### Forbidden patterns:
 - `notes.txt`, `todo.txt`, `credentials.txt` with passwords or usernames
+- Backup files (`*.bak`, `*.old`, `*.backup`) containing credentials
+- Developer notes or README files with hardcoded passwords
 - Comments in config files saying `# TODO: remove this password`
 - `.bash_history` conveniently containing the exact command needed
 - Readable `/etc/shadow` without narrative justification
 - Desktop files with hints like `password_reminder.txt`
+- Any file whose sole purpose is to hand the solver a credential
 
 ### Acceptable discovery methods:
 - Reading application source code that reveals database connection strings
@@ -137,7 +140,50 @@ Flags are always placed at these exact locations:
 
 ---
 
-## 8. CVE and Vulnerability Selection
+## 8. Password and Credential Realism
+
+When password cracking or brute forcing is part of the attack chain, the passwords **must** be found in well-known, commonly used wordlists:
+
+### Acceptable wordlists:
+- `rockyou.txt`
+- `xato-net-10-million-passwords` (and its variants: 10k, 100k, 1M)
+- `SecLists` common credential lists
+- Default application credentials (e.g., `admin:admin` for a specific app)
+
+### Forbidden credential sources:
+- Backup files (`database.bak`, `config.old`, `credentials.backup`)
+- Developer notes (`notes.txt`, `todo.md`, `README-internal.md`)
+- Plaintext files left on disk with passwords
+- `.bash_history` with credentials in command arguments
+
+The solver must discover the password through legitimate brute-force attacks against services (SSH, web login, database) using standard penetration testing wordlists, OR find credentials in realistic application config files (`.env`, `config.py`, `wp-config.php`, `application.yml`).
+
+---
+
+## 9. Realistic Vulnerability Selection
+
+CTF labs should be as **realistic as possible**, using the latest and most commonly exploited vulnerabilities. Prioritize:
+
+- **OWASP Top 10** vulnerabilities (Injection, Broken Access Control, SSRF, Security Misconfiguration, etc.)
+- **Recently disclosed CVEs** affecting popular software
+- **Common real-world misconfigurations** seen in actual penetration tests
+- **Vulnerability classes** that match current threat landscapes
+
+Avoid outdated or contrived vulnerability patterns that don't reflect modern attack surfaces.
+
+---
+
+## 10. Default Operating System
+
+The available Ubuntu server versions are: **24.04**, **25.04**, and **26.04**.
+
+- **Ubuntu 26.04** is the recommended default for all scenarios
+- Use an older version (24.04 or 25.04) **only** when the scenario specifically requires it (e.g., kernel-level CVEs that target older kernel versions)
+- Always specify the exact OS version in the scenario's Architecture section
+
+---
+
+## 11. CVE and Vulnerability Selection
 
 - Use **real CVEs** whenever possible, with the correct CVE ID and CVSS score
 - The CVE must affect the **exact version** of software specified in the architecture
