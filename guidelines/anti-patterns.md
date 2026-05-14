@@ -14,7 +14,7 @@ This document lists common mistakes in CTF machine design that the AI agent **mu
 
 **Why it's bad:** No real person writes their passwords in plaintext notes on a production server. This is a lazy shortcut that breaks immersion and teaches nothing.
 
-**What to do instead:** Place credentials in application config files where they belong — `.env` files, `config.py`, `application.yml`, `wp-config.php`. The solver finds them by reading source code, not by stumbling on notes.
+**What to do instead:** Place credentials in application config files where they belong — `.env` files, `config.py`, `application.yml`, `wp-config.php`. The solver finds them by reading source code, not by stumbling on notes. When password cracking is needed, use passwords from common brute-force wordlists like `rockyou.txt` or `xato-net-10-million-passwords`.
 
 ---
 
@@ -57,7 +57,7 @@ Google "linux 4.4.0-21 exploit" → DirtyCow → root
 
 **Why it's bad (sometimes):** These can be realistic but are massively overused. If you use one, it must be central to the story, not a random discovery.
 
-**What to do instead:** If credentials are part of the chain, embed them in a realistic context — a MongoDB instance with no auth (because the developer followed a tutorial that didn't cover auth), a Redis instance bound to 0.0.0.0 (because the developer copied a Docker config), application config files with database connection strings.
+**What to do instead:** If credentials are part of the chain, embed them in a realistic context — a MongoDB instance with no auth (because the developer followed a tutorial that didn't cover auth), a Redis instance bound to 0.0.0.0 (because the developer copied a Docker config), application config files with database connection strings. When brute forcing is required, use passwords that exist in well-known wordlists (rockyou.txt, xato-net-10-million-passwords, SecLists).
 
 ---
 

@@ -109,5 +109,7 @@ Before finalizing an Insane scenario, verify:
 - [ ] The chain would challenge an experienced CTF player for 8+ hours
 - [ ] No `sudo -l` giveaway privesc
 - [ ] No plaintext credential files used as hints
+- [ ] Passwords requiring cracking are found in common wordlists (rockyou.txt, etc.)
+- [ ] OS is Ubuntu 26.04 unless an older version is specifically justified
 - [ ] Multiple false paths exist at each decision point
 - [ ] The "intended path" is not the most obvious approach
