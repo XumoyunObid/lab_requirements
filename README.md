@@ -36,7 +36,6 @@ The agent should follow the structure in [`templates/`](templates/) and the qual
 │   ├── medium.md                      # Medium-level constraints and expectations
 │   └── insane.md                      # Insane-level constraints and expectations
 └── examples/
-    ├── easy-kickstore.md              # Example: Easy machine (KickStore)
     ├── medium-taskflow.md             # Example: Medium machine (TaskFlow)
     └── medium-tandoor.md              # Example: Medium machine (Tandoor)
 ```
