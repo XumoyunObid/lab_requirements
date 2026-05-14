@@ -56,7 +56,7 @@ The agent should follow the structure in [`templates/`](templates/) and the qual
 3. **No lazy privesc** — No `sudo -l` one-liners unless there's a strong narrative reason.
 4. **Real-world patterns** — Misconfigurations should mirror what real developers/sysadmins actually do.
 5. **Connected chain** — Each step must logically lead to the next through realistic enumeration.
-6. **Flags** — Always placed at `/home/<user>/user.txt` and `/root/root.txt`.
+6. **Flags** — Always placed at `/home/<user>/user.txt` and `/root/root.txt`. Flag content must follow the format `MS{<random_hash>}` (e.g., `MS{a1b2c3d4e5f6...}`).
 7. **Realistic vulnerabilities** — Labs should use the latest and most common vulnerabilities (e.g., OWASP Top 10) to be as realistic as possible.
 8. **Brute-forceable passwords** — When password cracking is part of the chain, passwords must come from well-known wordlists (rockyou.txt, xato-net-10-million-passwords, etc.), never from backup files, developer notes, or planted credential files.
 

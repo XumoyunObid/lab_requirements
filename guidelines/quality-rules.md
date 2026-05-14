@@ -134,6 +134,16 @@ Flags are always placed at these exact locations:
 | `user.txt` | `/home/<user>/user.txt` | User-level shell |
 | `root.txt` | `/root/root.txt` | Root-level access |
 
+### Flag Format
+
+Flag content **must** follow the format: `MS{<random_hash>}`
+
+- Each flag is a unique random hash wrapped in the `MS{}` prefix (e.g., `MS{a1b2c3d4e5f67890abcdef1234567890}`)
+- Generate a random MD5 or SHA-256 hash for each flag — never use predictable or sequential values
+- Both `user.txt` and `root.txt` must contain a flag in this format
+
+### Flag Permissions
+
 - `<user>` is the first user the solver compromises after the initial web exploit
 - The user flag should be readable only by that user (and root)
 - The root flag should be readable only by root
