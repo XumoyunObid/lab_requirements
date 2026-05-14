@@ -99,6 +99,7 @@ Total time: **8-24+ hours** for the target audience.
 Before finalizing an Insane scenario, verify:
 
 - [ ] The attack chain has 4-6 distinct steps
+- [ ] Any CVE used is from 2025 or 2026 (`CVE-2025-*` or `CVE-2026-*`)
 - [ ] At least one step requires custom exploit development or significant PoC modification
 - [ ] At least one lateral movement pivot is included
 - [ ] The privesc is non-obvious and requires research

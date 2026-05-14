@@ -196,6 +196,7 @@ The available Ubuntu server versions are: **24.04**, **25.04**, and **26.04**.
 ## 11. CVE and Vulnerability Selection
 
 - Use **real CVEs** whenever possible, with the correct CVE ID and CVSS score
+- **CVEs must be from 2025 or 2026 only** — Use CVE IDs in the format `CVE-2025-*` or `CVE-2026-*`. Older CVEs are not permitted to ensure scenarios reflect current threat landscapes
 - The CVE must affect the **exact version** of software specified in the architecture
 - For custom vulnerabilities (e.g., XXE, LFI, SSTI), cite the relevant CWE
 - Specify whether a public PoC exists and link to it conceptually
