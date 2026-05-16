@@ -21,7 +21,7 @@ Build me a medium CTF machine scenario themed around a DevOps startup using Jenk
 For stronger prompt engineering, you can also set an explicit role for the agent, for example:
 
 ```
-You are a senior CTF laboratory developer. Build me an [easy|medium|hard|insane] CTF machine scenario and strictly follow this repository's templates and guidelines.
+You are a senior CTF laboratory developer. Build me an {difficulty level} CTF machine scenario (easy, medium, hard, or insane) and strictly follow this repository's templates and guidelines.
 ```
 
 The agent should follow the structure in [`templates/`](templates/) and the quality rules in [`guidelines/`](guidelines/) to generate the scenario.
