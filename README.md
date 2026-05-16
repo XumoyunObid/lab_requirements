@@ -18,6 +18,12 @@ Or with more detail:
 Build me a medium CTF machine scenario themed around a DevOps startup using Jenkins and Docker.
 ```
 
+For stronger prompt engineering, you can also set an explicit role for the agent, for example:
+
+```
+You are a senior CTF laboratory developer. Build me a [easy|medium|hard|insane] CTF machine scenario and strictly follow this repository's templates and guidelines.
+```
+
 The agent should follow the structure in [`templates/`](templates/) and the quality rules in [`guidelines/`](guidelines/) to generate the scenario.
 
 ---
