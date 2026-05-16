@@ -24,6 +24,7 @@ The solver must discover information through **realistic enumeration**, not plan
 ### Forbidden patterns:
 - `notes.txt`, `todo.txt`, `credentials.txt` with passwords or usernames
 - Backup files (`*.bak`, `*.old`, `*.backup`) containing credentials
+- `.env` / `.env.*` files containing reusable plaintext credentials for SSH, database admin, or privileged service users
 - Developer notes or README files with hardcoded passwords
 - Comments in config files saying `# TODO: remove this password`
 - `.bash_history` conveniently containing the exact command needed
@@ -32,7 +33,7 @@ The solver must discover information through **realistic enumeration**, not plan
 - Any file whose sole purpose is to hand the solver a credential
 
 ### Acceptable discovery methods:
-- Reading application source code that reveals database connection strings
+- Reading application source code that reveals architecture, endpoint behavior, and non-secret operational context
 - Enumerating running processes (`ps aux`) to discover services
 - Network scanning internal ports (`ss -tlnp`) to find internal APIs
 - Reading legitimate config files (nginx, PM2, docker-compose) that reveal architecture
@@ -103,7 +104,7 @@ The machine's architecture must reflect **real-world deployments**.
 
 ---
 
-## 6. Rabbit Holes (Medium and Insane only)
+## 6. Rabbit Holes (Medium, Hard, and Insane)
 
 Rabbit holes are **intentional dead ends** that waste the solver's time. They must be:
 
@@ -122,6 +123,12 @@ Rabbit holes are **intentional dead ends** that waste the solver's time. They mu
 - Random misleading files with no relation to the story
 - Services that serve no narrative purpose
 - Intentionally broken exploits that waste time without teaching anything
+
+### Required counts by level:
+- **Easy:** 0-1 (optional)
+- **Medium:** 1-2
+- **Hard:** 2
+- **Insane:** 2-3
 
 ---
 
@@ -166,7 +173,7 @@ When password cracking or brute forcing is part of the attack chain, the passwor
 - Plaintext files left on disk with passwords
 - `.bash_history` with credentials in command arguments
 
-The solver must discover the password through legitimate brute-force attacks against services (SSH, web login, database) using standard penetration testing wordlists, OR find credentials in realistic application config files (`.env`, `config.py`, `wp-config.php`, `application.yml`).
+The solver must discover secrets through realistic attack paths such as controlled brute-force workflows, hash cracking from legitimate data stores, identity/token abuse, or runtime/service-level extraction that follows from prior access.
 
 ---
 
@@ -183,7 +190,16 @@ Avoid outdated or contrived vulnerability patterns that don't reflect modern att
 
 ---
 
-## 10. Default Operating System
+## 10. Vulnerability Diversity and Chain Discipline
+
+- Avoid repeating the same vulnerability class in multiple intended-path steps unless there is a strong architectural reason
+- Chain steps must move across different attack surfaces where possible (web, identity, internal service, automation, local privilege)
+- If one class appears twice, explain why the architecture realistically causes the recurrence
+- The intended chain should remain the most logical path, not a pile of disconnected issues
+
+---
+
+## 11. Default Operating System
 
 The available Ubuntu server versions are: **24.04**, **25.04**, and **26.04**.
 
@@ -193,7 +209,7 @@ The available Ubuntu server versions are: **24.04**, **25.04**, and **26.04**.
 
 ---
 
-## 11. CVE and Vulnerability Selection
+## 12. CVE and Vulnerability Selection
 
 - Use **real CVEs** whenever possible, with the correct CVE ID and CVSS score
 - **CVEs must be from 2025 or 2026 only** — Use CVE IDs in the format `CVE-2025-*` or `CVE-2026-*`. Older CVEs are not permitted to ensure scenarios reflect current threat landscapes

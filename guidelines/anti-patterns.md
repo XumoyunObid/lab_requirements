@@ -14,7 +14,7 @@ This document lists common mistakes in CTF machine design that the AI agent **mu
 
 **Why it's bad:** No real person writes their passwords in plaintext notes on a production server. This is a lazy shortcut that breaks immersion and teaches nothing.
 
-**What to do instead:** Place credentials in application config files where they belong — `.env` files, `config.py`, `application.yml`, `wp-config.php`. The solver finds them by reading source code, not by stumbling on notes. When password cracking is needed, use passwords from common brute-force wordlists like `rockyou.txt` or `xato-net-10-million-passwords`.
+**What to do instead:** Keep credential discovery realistic: use identity/token abuse, hash cracking from legitimate stores, or runtime/service-level extraction that follows from prior access. When password cracking is needed, use passwords from common brute-force wordlists like `rockyou.txt` or `xato-net-10-million-passwords`.
 
 ---
 
@@ -57,7 +57,22 @@ Google "linux 4.4.0-21 exploit" → DirtyCow → root
 
 **Why it's bad (sometimes):** These can be realistic but are massively overused. If you use one, it must be central to the story, not a random discovery.
 
-**What to do instead:** If credentials are part of the chain, embed them in a realistic context — a MongoDB instance with no auth (because the developer followed a tutorial that didn't cover auth), a Redis instance bound to 0.0.0.0 (because the developer copied a Docker config), application config files with database connection strings. When brute forcing is required, use passwords that exist in well-known wordlists (rockyou.txt, xato-net-10-million-passwords, SecLists).
+**What to do instead:** If credentials are part of the chain, tie them to realistic system behavior — weak auth boundaries, exposed internal services, reusable service tokens, or crackable hashes from real data stores. Avoid plaintext secrets in `.env`, backups, or convenience files. When brute forcing is required, use passwords that exist in well-known wordlists (rockyou.txt, xato-net-10-million-passwords, SecLists).
+
+---
+
+## 🚫 Anti-Pattern 11: Vulnerability Class Repetition
+
+**What it looks like:**
+```
+Step 1: SQLi for initial access
+Step 2: Another SQLi in internal service
+Step 3: SQLi again for privesc metadata
+```
+
+**Why it's bad:** Realistic environments can have multiple bugs, but intended chains built on the same class repeatedly feel forced and predictable.
+
+**What to do instead:** Vary intended-path techniques across attack surfaces (web, identity, service trust, automation, local privilege). If the same class appears again, justify it with architecture and make the discovery path explicit.
 
 ---
 
