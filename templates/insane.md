@@ -107,9 +107,10 @@ Before finalizing an Insane scenario, verify:
 - [ ] Each rabbit hole teaches an advanced concept
 - [ ] The story is complex enough to justify the architecture
 - [ ] All vulnerabilities are realistically motivated by the story
+- [ ] Vulnerability classes are varied across the intended chain
 - [ ] The chain would challenge an experienced CTF player for 8+ hours
 - [ ] No `sudo -l` giveaway privesc
-- [ ] No plaintext credential files used as hints
+- [ ] No plaintext credentials are handed over via `.env`, backup, note, or hint files
 - [ ] Passwords requiring cracking are found in common wordlists (rockyou.txt, etc.)
 - [ ] OS is Ubuntu 26.04 unless an older version is specifically justified
 - [ ] Multiple false paths exist at each decision point

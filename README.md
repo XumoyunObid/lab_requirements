@@ -9,7 +9,7 @@ When prompting an AI agent, specify the **difficulty level** and optionally a **
 ### Quick Start
 
 ```
-Build me a [easy|medium|insane] CTF machine scenario.
+Build me a [easy|medium|hard|insane] CTF machine scenario.
 ```
 
 Or with more detail:
@@ -34,6 +34,7 @@ The agent should follow the structure in [`templates/`](templates/) and the qual
     ├── scenario-template.md           # Universal scenario document structure
     ├── easy.md                        # Easy-level constraints and expectations
     ├── medium.md                      # Medium-level constraints and expectations
+    ├── hard.md                        # Hard-level constraints and expectations
     └── insane.md                      # Insane-level constraints and expectations
 ```
 
@@ -45,20 +46,22 @@ The agent should follow the structure in [`templates/`](templates/) and the qual
 |-------|-------------------|-----------------|--------------|---------------------|
 | **Easy** | 2–3 | Known CVEs, simple misconfigs | 0–1 | 1–3 hours |
 | **Medium** | 3–4 | Chained vulns, service interaction | 1–2 | 3–8 hours |
-| **Insane** | 4–6 | Custom exploits, multi-pivot, crypto | 2–3 | 8–24+ hours |
+| **Hard** | 4–5 | Multi-layer chaining, deep enum, realistic pivots | 2 | 6–14 hours |
+| **Insane** | 5–6 | Custom exploits, multi-pivot, advanced tradecraft | 2–3 | 8–24+ hours |
 
 ---
 
 ## Core Principles
 
 1. **Logical coherence** — Every vulnerability must have a believable reason to exist in the story.
-2. **No contrived hints** — No `notes.txt` with passwords, no `credentials.bak`, no backup files or developer notes with credentials.
+2. **No contrived hints** — No `notes.txt` with passwords, no `credentials.bak`, no backup files, and no plaintext credentials in `.env` or similar convenience files.
 3. **No lazy privesc** — No `sudo -l` one-liners unless there's a strong narrative reason.
 4. **Real-world patterns** — Misconfigurations should mirror what real developers/sysadmins actually do.
 5. **Connected chain** — Each step must logically lead to the next through realistic enumeration.
 6. **Flags** — Always placed at `/home/<user>/user.txt` and `/root/root.txt`. Flag content must follow the format `MS{<random_hash>}` (e.g., `MS{a1b2c3d4e5f6...}`).
 7. **Realistic vulnerabilities** — Labs should use the latest and most common vulnerabilities (e.g., OWASP Top 10) to be as realistic as possible. CVEs must be recent: only `CVE-2025-*` or `CVE-2026-*` are permitted.
-8. **Brute-forceable passwords** — When password cracking is part of the chain, passwords must come from well-known wordlists (rockyou.txt, xato-net-10-million-passwords, etc.), never from backup files, developer notes, or planted credential files.
+8. **Credential realism** — Never hand over plaintext credentials via `.env`, `*.bak`, `*.old`, notes, or planted files. Secrets must be discovered through realistic service behavior, identity flows, or validated cracking paths.
+9. **Vulnerability diversity** — Avoid repeating the same vulnerability class across the intended chain unless there is a strong architectural reason.
 
 ---
 

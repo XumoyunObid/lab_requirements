@@ -3,7 +3,7 @@
 ## Overview
 
 **Name:** [Machine Name]
-**Difficulty:** [Easy | Medium | Insane]
+**Difficulty:** [Easy | Medium | Hard | Insane]
 **OS:** [Operating System and Version — default: Ubuntu 26.04 unless older version justified for kernel CVEs]
 **Domain:** `[machine-name.ms]`
 **Theme:** [One-line description of the scenario's real-world context]
@@ -59,7 +59,7 @@
 
 ## Rabbit Holes
 
-<!-- Required for Medium (1-2) and Insane (2-3). Optional for Easy (0-1). -->
+<!-- Required for Medium (1-2), Hard (2), and Insane (2-3). Optional for Easy (0-1). -->
 
 ### Rabbit Hole 1: [Name]
 

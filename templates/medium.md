@@ -96,8 +96,9 @@ Before finalizing a Medium scenario, verify:
 - [ ] 1-2 rabbit holes are included and are technically convincing
 - [ ] Each step logically leads to the next through enumeration
 - [ ] The story explains all vulnerabilities and misconfigurations naturally
+- [ ] Vulnerability classes are varied across the intended chain
 - [ ] No `sudo -l` giveaway privesc
-- [ ] No plaintext credential files used as hints
+- [ ] No plaintext credentials are handed over via `.env`, backup, note, or hint files
 - [ ] Passwords requiring cracking are found in common wordlists (rockyou.txt, etc.)
 - [ ] OS is Ubuntu 26.04 unless an older version is specifically justified
 - [ ] The chain would survive review by an experienced penetration tester
