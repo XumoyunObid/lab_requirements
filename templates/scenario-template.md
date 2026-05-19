@@ -72,12 +72,12 @@
 
 ## Flags
 
-Flag format: `MS{<random_hash>}` (e.g., `MS{a1b2c3d4e5f67890abcdef1234567890}`)
+Flag format: `MAHADSEC{<32_hex_characters>}` (e.g., `MAHADSEC{a7f3b9c2e1d8f4a6b5c3d2e1f0a9b8c7}`)
 
 | Flag | Location | Content | Access |
 |------|----------|---------|--------|
-| user.txt | /home/[user]/ | `MS{<unique_random_hash>}` | [username] |
-| root.txt | /root/ | `MS{<unique_random_hash>}` | root |
+| user.txt | /home/[user]/ | `MAHADSEC{<unique_32_hex>}` | [username] |
+| root.txt | /root/ | `MAHADSEC{<unique_32_hex>}` | root |
 
 ---
 
