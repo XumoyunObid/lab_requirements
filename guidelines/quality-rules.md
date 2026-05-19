@@ -148,6 +148,7 @@ Flag content **must** follow the format: `MS{<random_hash>}`
 - Each flag is a unique random hash wrapped in the `MS{}` prefix (e.g., `MS{a1b2c3d4e5f67890abcdef1234567890}`)
 - Generate a random MD5 or SHA-256 hash for each flag — never use predictable or sequential values
 - Both `user.txt` and `root.txt` must contain a flag in this format
+- Flags must **never** be hardcoded — they are generated at runtime and injected per user via cloud-init/API
 
 ### Flag Permissions
 

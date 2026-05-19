@@ -1,0 +1,53 @@
+# Machine Submission Template
+# Every machine must be submitted with this metadata.
+# Fill in all fields before submission.
+
+name: "Internal Breach"                    # Machine display name
+slug: "internal-breach"                    # URL-safe identifier (lowercase, hyphens)
+difficulty: medium                         # easy | medium | hard | insane
+os: linux                                  # linux | windows
+os_version: "Ubuntu 22.04"                 # Exact OS version
+category: web+privesc                      # Attack categories (e.g., web, privesc, ad, web+privesc)
+
+tags:                                      # Technology and technique tags
+  - "nodejs"
+  - "mongodb-injection"
+  - "docker-group"
+  - "credential-reuse"
+
+skills_covered:                            # Skills the student learns
+  - "NoSQL injection in Node.js application"
+  - "Docker group privilege escalation"
+  - "Internal service enumeration"
+  - "Credential hunting in config files"
+
+required_knowledge:                        # Prerequisites for the student
+  - "Basic web application testing"
+  - "Linux privilege escalation methodology"
+  - "Docker basics"
+
+estimated_time_hours: 4                    # Expected solve time in hours
+
+mitre_techniques:                          # MITRE ATT&CK technique IDs
+  - "T1190"
+  - "T1552.001"
+  - "T1611"
+
+author: "engineer_name"                    # Machine author
+release_date: "2026-07-01"                 # Planned release date (YYYY-MM-DD)
+
+resources:                                 # Resource allocation
+  ram_mb: 2048
+  cpu_cores: 2
+  disk_gb: 12
+
+flags:                                     # Flag file locations
+  user: "/home/devuser/user.txt"
+  root: "/root/root.txt"
+
+privesc_type: "docker-group-abuse"         # Primary privesc technique
+foothold_type: "nosql-injection"           # Primary foothold technique
+
+certifications:                            # Relevant certifications
+  - "OSCP"
+  - "PNPT"

@@ -76,6 +76,123 @@ Step 3: SQLi again for privesc metadata
 
 ---
 
+## 🚫 Anti-Pattern 12: Steganography
+
+**What it looks like:**
+```
+Hidden message inside a JPEG/PNG image on the web server
+Use steghide/stegsolve to extract a password
+```
+
+**Why it's bad:** Steganography is not a penetration testing technique. No real corporate pentest involves extracting data from images. This is a puzzle, not a security vulnerability.
+
+**What to do instead:** Use realistic data discovery — config files, database queries, API responses, service enumeration.
+
+---
+
+## 🚫 Anti-Pattern 13: Brute-Force as the Only Path
+
+**What it looks like:**
+```
+Login page with no rate limiting
+Only way in is to brute-force the password
+No other enumeration leads anywhere
+```
+
+**Why it's bad:** If the entire foothold depends on brute-forcing without any other enumeration path, the machine tests patience, not skill. Real pentest findings come from misconfigurations and vulnerabilities, not pure brute-force.
+
+**What to do instead:** Brute-force can be part of a chain (e.g., credential stuffing with a leaked list), but must never be the sole discovery method. Provide realistic enumeration paths.
+
+---
+
+## 🚫 Anti-Pattern 14: PATH Hijacking (Simple)
+
+**What it looks like:**
+```
+export PATH=/tmp:$PATH
+Create fake binary in /tmp → run vulnerable script → root
+```
+
+**Why it's bad:** Simple PATH hijacking where you prepend `/tmp` to PATH and replace a binary is almost never seen in real corporate environments. Modern scripts use absolute paths, and this is a CTF-only pattern.
+
+**What to do instead:** Use dependency hijacking in custom applications (e.g., Python/Node module path injection, DLL hijacking in writable directories) which reflects real-world attack vectors.
+
+---
+
+## 🚫 Anti-Pattern 15: LD_PRELOAD as Sole Privesc
+
+**What it looks like:**
+```
+sudo -l shows: env_keep += LD_PRELOAD
+Compile shared library → LD_PRELOAD=/tmp/evil.so sudo <command> → root
+```
+
+**Why it's bad:** `env_keep += LD_PRELOAD` is not found in real sudoers configurations. This is a teaching example that became a CTF cliché. No sysadmin deliberately keeps LD_PRELOAD in the sudo environment.
+
+**What to do instead:** Use real shared library injection paths — writable library directories in the search path, writable RPATH in custom binaries, or legitimate LD_PRELOAD configurations in application startup scripts.
+
+---
+
+## 🚫 Anti-Pattern 16: SUID on Standard Utilities
+
+**What it looks like:**
+```
+find / -perm -4000 2>/dev/null
+/usr/bin/find (SUID)
+/usr/bin/vim (SUID)
+/usr/bin/less (SUID)
+/usr/bin/nmap (SUID)
+```
+
+**Why it's bad:** No system administrator sets the SUID bit on `find`, `vim`, `less`, or `nmap`. These are GTFOBins entries that exist only in CTFs. This teaches students to rely on an unrealistic pattern they will never encounter on a real engagement.
+
+**What to do instead:** If SUID binaries are part of the chain, use custom binaries that require reverse engineering (Medium+) or legitimate SUID programs with known vulnerabilities.
+
+---
+
+## 🚫 Anti-Pattern 17: Trivia and Puzzle Challenges
+
+**What it looks like:**
+```
+Solve a math puzzle to get the next password
+Decode ROT13 → base64 → hex → get credentials
+Answer a riddle on the web page to unlock admin
+```
+
+**Why it's bad:** Penetration testing is not a puzzle game. Multi-layer encoding, math challenges, sudoku, and riddles have no place in a realistic attack simulation. These test general knowledge, not security skills.
+
+**What to do instead:** Use real cryptographic weaknesses (weak JWT secrets, predictable tokens, padding oracle) or realistic encoding scenarios (base64-encoded API tokens that need to be decoded once as part of normal API interaction).
+
+---
+
+## 🚫 Anti-Pattern 18: Social Engineering Hints
+
+**What it looks like:**
+```
+Hidden HTML comment: "<!-- admin password: Summer2024! -->"
+Web page with subtle hint: "Did you check the admin panel?"
+robots.txt pointing to /secret-admin as the ONLY discovery path
+```
+
+**Why it's bad:** Planting obvious hints in HTML comments or using social engineering cues is not realistic enumeration. While `robots.txt` is a valid recon technique, it should not be the sole path to discovery.
+
+**What to do instead:** Let the solver discover paths through standard web fuzzing (gobuster, ffuf), API enumeration, or service fingerprinting. Information should come from realistic sources — error messages, API responses, version disclosures.
+
+---
+
+## 🚫 Anti-Pattern 19: Prohibited Content
+
+The following content is **strictly prohibited** in all machines:
+
+- **Real malware** — even in disabled state, never include actual malware samples
+- **Cracked/pirated software** — never use unlicensed commercial software
+- **Backdoors** — no hidden access methods for the machine engineer
+- **Ransomware simulation** — no encryption of user files
+- **Botnet/C2 client code** — no command-and-control infrastructure
+- **Undocumented internet dependency** — if a machine requires internet access, this must be explicitly documented in the technical requirements
+
+---
+
 ## 🚫 Anti-Pattern 5: The Random SUID Binary
 
 **What it looks like:**
