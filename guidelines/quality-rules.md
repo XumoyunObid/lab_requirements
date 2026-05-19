@@ -143,10 +143,10 @@ Flags are always placed at these exact locations:
 
 ### Flag Format
 
-Flag content **must** follow the format: `MAHADSEC{<32_hex_characters>}`
+Flag content **must** follow the format: `MS{<random_hash>}`
 
-- Each flag is a unique random 32-character hex string wrapped in the `MAHADSEC{}` prefix (e.g., `MAHADSEC{a7f3b9c2e1d8f4a6b5c3d2e1f0a9b8c7}`)
-- Generate a random MD5 or SHA-256 hash (truncated to 32 hex characters) for each flag — never use predictable or sequential values
+- Each flag is a unique random hash wrapped in the `MS{}` prefix (e.g., `MS{a1b2c3d4e5f67890abcdef1234567890}`)
+- Generate a random MD5 or SHA-256 hash for each flag — never use predictable or sequential values
 - Both `user.txt` and `root.txt` must contain a flag in this format
 - Flags must **never** be hardcoded — they are generated at runtime and injected per user via cloud-init/API
 

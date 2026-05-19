@@ -79,7 +79,7 @@ The agent should follow the structure in [`templates/`](templates/) and the qual
 3. **No lazy privesc** — No `sudo -l` one-liners unless there's a strong narrative reason.
 4. **Real-world patterns** — Misconfigurations should mirror what real developers/sysadmins actually do.
 5. **Connected chain** — Each step must logically lead to the next through realistic enumeration.
-6. **Flags** — Always placed at `/home/<user>/user.txt` and `/root/root.txt`. Flag content must follow the format `MAHADSEC{<32_hex_characters>}` (e.g., `MAHADSEC{a7f3b9c2e1d8f4a6b5c3d2e1f0a9b8c7}`). Flags are unique per user and generated at runtime — never hardcoded.
+6. **Flags** — Always placed at `/home/<user>/user.txt` and `/root/root.txt`. Flag content must follow the format `MS{<random_hash>}` (e.g., `MS{a1b2c3d4e5f67890abcdef1234567890}`). Flags are unique per user and generated at runtime — never hardcoded.
 7. **Realistic vulnerabilities** — Labs should use the latest and most common vulnerabilities (e.g., OWASP Top 10) to be as realistic as possible. CVEs must be recent: only `CVE-2025-*` or `CVE-2026-*` are permitted.
 8. **Credential realism** — Never hand over plaintext credentials via `.env`, `*.bak`, `*.old`, notes, or planted files. Secrets must be discovered through realistic service behavior, identity flows, or validated cracking paths.
 9. **Vulnerability diversity** — Avoid repeating the same vulnerability class across the intended chain unless there is a strong architectural reason.

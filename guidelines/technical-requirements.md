@@ -47,10 +47,10 @@ Standard limits — exceeding these requires lead engineer approval:
 ### Format
 
 ```
-MAHADSEC{<32_hex_characters>}
+MS{<random_hash>}
 ```
 
-Example: `MAHADSEC{a7f3b9c2e1d8f4a6b5c3d2e1f0a9b8c7}`
+Example: `MS{a1b2c3d4e5f67890abcdef1234567890}`
 
 ### Rules
 
